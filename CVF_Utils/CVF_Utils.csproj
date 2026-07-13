@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+
+    <TargetFrameworks>net8.0-windows;net10.0-windows</TargetFrameworks>
+	  <UseWindowsForms>false</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <!-- Métadonnées NuGet -->
+	  <PackageId>CVF.CVF_Utils</PackageId>
+	  <Company>CVF</Company>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+	
+</Project>

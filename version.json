@@ -1,0 +1,11 @@
+{
+    "$schema":  "https://raw.githubusercontent.com/dotnet/Nerdbank.GitVersioning/main/src/NerdBank.GitVersioning/version.schema.json",
+    "version":  "2025.1",
+    "assemblyVersion":  {
+                            "precision":  "minor"
+                        },
+    "publicReleaseRefs":  [
+                              "^refs/heads/master$",
+                              "^refs/heads/v\\d+(?:\\.\\d+)?$"
+                          ]
+}

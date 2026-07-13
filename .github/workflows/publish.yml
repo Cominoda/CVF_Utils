@@ -1,0 +1,22 @@
+name: Publish NuGet
+on:
+  push:
+    tags: [ 'v*' ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+      - run: dotnet restore
+      - run: dotnet build -c Release --no-restore
+      - run: dotnet pack -c Release --no-build -o ./artifacts
+      - run: dotnet nuget push "./artifacts/*.nupkg" --source "https://nuget.pkg.github.com/LE_CHEF/index.json" --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
