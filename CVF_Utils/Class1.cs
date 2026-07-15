@@ -1,11 +1,10 @@
-﻿namespace CVF_Utils
+﻿namespace CVF_Utils;
+
+public class Class1
 {
-    public class Class1
+    public void DoSomething()
     {
-        public void DoSomething()
-        {
-            Console.WriteLine("azerty");
-            // Implementation goes here
-        }
+        Console.WriteLine("azerty");
+        // Implementation goes here
     }
 }

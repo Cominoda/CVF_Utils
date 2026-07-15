@@ -1,15 +1,41 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-windows;net10.0-windows</TargetFrameworks>
+		<UseWindowsForms>false</UseWindowsForms>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-    <TargetFrameworks>net8.0-windows;net10.0-windows</TargetFrameworks>
-	  <UseWindowsForms>false</UseWindowsForms>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-	  <!-- Métadonnées NuGet -->
-	  <PackageId>CVF.CVF_Utils</PackageId>
-	  <Company>CVF</Company>
-	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-  </PropertyGroup>
-	
+	<!-- ─── Métadonnées NuGet communes ─────────────────────────── -->
+	<PropertyGroup>
+		<Company>CVF</Company>
+		<RepositoryUrl>https://github.com/Cominoda/CV_Utils</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+
+		<!-- Génère un .snupkg à côté du .nupkg : les symboles de debug.
+         Permet de rentrer au pas-à-pas DANS le code de la lib
+         depuis un projet consommateur. Très utile en interne. -->
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+		<!-- Embarque les infos de commit dans le package, pour que
+         le debugger sache quel code source correspond exactement
+         à la DLL. Fonctionne avec IncludeSymbols. -->
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- PrivateAssets="all" : nbgv est un outil de BUILD.
+         Sans ça, il apparaîtrait comme dépendance dans le .nupkg
+         et serait installé chez tous vos consommateurs. -->
+		<PackageReference Include="Nerdbank.GitVersioning" Version="3.7.115" PrivateAssets="all" />
+
+		<!-- Idem : intègre les liens vers le source GitHub dans les
+         symboles. Permet le débogage pas-à-pas depuis n'importe
+         quelle machine, sans avoir le repo en local. -->
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="all" />
+	</ItemGroup>
+
 </Project>
