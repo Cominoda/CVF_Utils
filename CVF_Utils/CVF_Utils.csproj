@@ -18,12 +18,17 @@
          depuis un projet consommateur. Très utile en interne. -->
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<DebugType>portable</DebugType>
 
 		<!-- Embarque les infos de commit dans le package, pour que
          le debugger sache quel code source correspond exactement
          à la DLL. Fonctionne avec IncludeSymbols. -->
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+		<!-- Autonomie : le code source est DANS le PDB -->
+		<EmbedAllSources>true</EmbedAllSources>
+		<DeterministicSourcePaths>true</DeterministicSourcePaths>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -35,7 +40,7 @@
 		<!-- Idem : intègre les liens vers le source GitHub dans les
          symboles. Permet le débogage pas-à-pas depuis n'importe
          quelle machine, sans avoir le repo en local. -->
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="all" />
+		<!--<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="all" />-->
 	</ItemGroup>
 
 </Project>
